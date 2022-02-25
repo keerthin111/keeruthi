@@ -43,7 +43,7 @@ namespace ConsoleApp4
     }
 }
 output :![image](https://user-images.githubusercontent.com/97940146/154634513-6641521f-45b3-4246-9e9f-47a13c8e1e5a.png)
-
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 2> c# program to check whether the entered number is an Amicable Number or not
 
  using System;
@@ -87,7 +87,7 @@ namespace ConsoleApp5
 }
 
 output : ![image](https://user-images.githubusercontent.com/97940146/154636028-d582561f-714f-4aba-94d1-bb67d26c63f6.png)
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 3> c# program to illustrate multilevel inheritance with virtual methods(display student detail)
 
 using System;
@@ -192,7 +192,7 @@ class MultiLevel
 }
 
 output :![image](https://user-images.githubusercontent.com/97940146/154636686-5e114600-3429-4c8e-a569-876435c7f44c.png)
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 4> c# program to generate Gray codeof decimal number
 
 using System;
@@ -218,3 +218,122 @@ namespace Exercise
 }
 
 output :![image](https://user-images.githubusercontent.com/97940146/154637209-6ebd7e91-610c-4077-add5-baa1977b0902.png)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5> c# program to calculate volume of 2 boxes and find the resultant volume after addition of 2 boxes bu implementing operator overloading
+
+using System;
+
+namespace Exercise 
+{
+    class Box
+    {
+        float width;
+        float height;
+        float length;
+        public float Volume
+        {
+            get { return width * height * length; }
+        }
+        public Box(float width,float height,float length)
+        {
+            this.width = width; 
+            this.height = height;
+            this.length = length;
+        }
+        public static float operator+(Box box1,Box box2)
+        {
+            return box1.Volume + box2.Volume;
+
+        }
+        public override string ToString()
+        {
+            return "box with width" + width + ",height" + height + "and length" + length;
+
+        }
+        class OperatorOverloading
+        {
+            public static void main()
+            {
+                Box box1 = new Box(10, 20, 30);
+                Box box2 = new Box(25, 32, 15);
+                Console.WriteLine("Volume of {0}is:{1}", box1, box1.Volume);
+                Console.WriteLine("Volume of {0}is:{1}", box2, box2.Volume);
+                Console.WriteLine("Vloume after adding boxes:{0}", box1 + box2);
+            }
+        }
+    }
+}
+
+Output : ![image](https://user-images.githubusercontent.com/97940146/155665064-dcc06aaf-fb44-4c7d-826c-1654dc69b92b.png)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+6> C# program to implement principles of Delegates(converting input string to uppercase first,last and entire string)
+
+using System;
+namespace Exercises
+{
+    class Delegates
+    {
+        delegate string UppercaseDelegate(string input);
+        static string UppercaseFirst(string input)
+        {
+            char[] buffer = input.ToCharArray();
+            buffer[0] = char.ToUpper(buffer[0]);
+            return new string(buffer);
+        }
+        static string UppercaseLast(string input)
+        {
+            char[] buffer = input.ToCharArray();
+            buffer[buffer.Length - 1] = char.ToUpper(buffer[buffer.Length - 1]); return new string(buffer);
+        }
+        static string UppercaseAll(string input)
+        {
+            return input.ToUpper();
+        }
+        static void WriteOutput(string input, UppercaseDelegate del)
+        {
+            Console.WriteLine("Input String: {0}", input);
+            Console.WriteLine("Output String: {0}", del(input));
+        }
+        static void main() 
+        {
+            WriteOutput("tom ", new UppercaseDelegate(UppercaseFirst));
+            WriteOutput("tom", new UppercaseDelegate(UppercaseLast));
+            WriteOutput("tom", new UppercaseDelegate(UppercaseAll));
+            Console.ReadLine();
+        }
+    }
+}
+
+Output : ![image](https://user-images.githubusercontent.com/97940146/155665637-a053a1bb-1327-44f8-b8c7-4a73fdb47243.png)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7>C# program to generate Register Number automatically for 100 student using static constructor
+using System;
+
+namespace Exercises 
+{
+    class RegisterNum
+    {
+        int regNo;
+        static int startNum;
+        static RegisterNum()
+        {
+            startNum = 20210000;
+        }
+        RegisterNum()
+        {
+            regNo = ++startNum;
+
+        }
+        public static void main(string[]args)
+        {
+            for(int i=0;i<100;i++)
+            {
+                RegisterNum student = new RegisterNum();
+                Console.WriteLine("student{0} : {1}", i + 1, student.regNo);
+            }
+        }
+    }
+}
+Output : [image](https://user-images.githubusercontent.com/97940146/155666316-26339e46-dd63-4b32-b508-631315106c71.png)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
